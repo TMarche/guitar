@@ -1,25 +1,21 @@
 import React from "react"
 import styled from "styled-components"
+import GuitarString from "./GuitarString"
 
 const Guitar = ({className, children}) => {
+    const strings = "E A D G B E".split(" ")
     return (
         <div className={className}>
-            I am the ultimate machine
-            {children}
+            {/* use reverse() -- bottom should be the bass strings */}
+            {strings.reverse().map( (x, i) => <GuitarString tuning={x} key={i}/> )}
         </div>
     )
 }
 
-const Button = styled.button`
-    font-size: 1em;
-    background-color: orange;
-    color: white;
-    border: none;
-`
 
 const StyledGuitar = styled(Guitar)`
-    font-size: 1em;
-    background-color: orange;
+    padding: 20px;
+    background-color: #333;
     color: white;
     border: none;
 `
