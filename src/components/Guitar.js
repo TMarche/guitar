@@ -7,17 +7,24 @@ const Guitar = ({className, children}) => {
     return (
         <div className={className}>
             {/* use reverse() -- bottom should be the bass strings */}
-            {strings.reverse().map( (x, i) => <GuitarString tuning={x} key={i}/> )}
+            <StringContainer>
+                {strings.reverse().map( (x, i) => <GuitarString tuning={x} key={i}/> )}
+            </StringContainer>
         </div>
     )
 }
 
 
-const StyledGuitar = styled(Guitar)`
+const StringContainer = styled.div`
     padding: 20px;
     background-color: #333;
     color: white;
     border: none;
+
+`
+
+
+const StyledGuitar = styled(Guitar)`
 `
 
 export default StyledGuitar
