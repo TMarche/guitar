@@ -3,18 +3,6 @@ import * as React from "react"
 import styled from "styled-components"
 import CircularList from "../structures/CircularList"
 
-/*
-  NOTE: Consider using svg.js or snap in order to generate:
-    - Chord Diagrams
-    - Individual notes
-    - Combinations of notes
-    - Basicall anything that needs to be displayed performantly
-  NOTE: Consider using anime.js for animations
-  NOTE: Consider 
-  Look at Fretty.app for inspiration/other things that could be added to make app more feature-complete
-
-*/
-
 const NOTE_CIRCLE = new CircularList("E F F# G G# A A# B C C# D D#".split(" "))
 
 class GuitarString extends React.Component {
@@ -32,8 +20,12 @@ class GuitarString extends React.Component {
     }
 
     presentAsString = () => {
+        const noteMapper = (x => {
+            if (!this.props.selectedNote) {return `(${x})`}
+            return x.toLowerCase() === this.props.selectedNote.toLowerCase() ? `(${x})` : "-"
+        })
         // Create string, taking into account the amount of space each item takes
-        return "||--" + this.state.notes.map( x => x === "E" ? `(${x})` : "-")
+        return "||--" + this.state.notes.map( noteMapper )
                     .map( x => x + "-".repeat(6 - x.length))
                     .join("|--") + "|"
     }

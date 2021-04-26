@@ -1,18 +1,40 @@
 import React from "react";
 import Guitar from "./Guitar"
 import styled from "styled-components"
+import Controls from "./Controls"
 
-const App = ({className}) => {
-    return (
-        <div className={className}>
-            <GuitarHeader>
-                TOTALLY RAD GUITAR SIMULATOR
-            </GuitarHeader>
-            <Guitar />
-            <Guitar />
-            <Guitar />
-        </div>
-    )
+/*
+  NOTE: Consider using svg.js or snap in order to generate:
+    - Chord Diagrams
+    - Individual notes
+    - Combinations of notes
+    - Basicall anything that needs to be displayed performantly
+  NOTE: Consider using anime.js for animations
+  NOTE: Consider 
+  Look at Fretty.app for inspiration/other things that could be added to make app more feature-complete
+
+*/
+
+class App extends React.Component {
+    state = {selectedNote: "F"}
+
+    render() {
+        return (
+            <div className={this.props.className}>
+                <GuitarHeader>
+                    TOTALLY RAD GUITAR SIMULATOR
+                </GuitarHeader>
+                <Controls setSelectedNote={this.setSelectedNote} selectedNote={this.state.selectedNote} />
+                <Guitar selectedNote={this.state.selectedNote}/>
+                <Guitar selectedNote={this.state.selectedNote}/>
+                <Guitar selectedNote={this.state.selectedNote}/>
+            </div>
+        )
+    } 
+
+    setSelectedNote = (selectedNote) => {
+        this.setState({selectedNote})
+    }
 }
 
 const GuitarHeader = styled.div`
