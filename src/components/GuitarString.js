@@ -6,7 +6,7 @@ import CircularList from "../structures/CircularList"
 const NOTE_CIRCLE = new CircularList("E F F# G G# A A# B C C# D D#".split(" "))
 
 class GuitarString extends React.Component {
-    static defaultProps = {length: 13}
+    static defaultProps = {length: 23}
     state = {notes: []}
 
     componentDidMount() {
@@ -15,8 +15,15 @@ class GuitarString extends React.Component {
 
     render() {
         return (
-            <div className={this.props.className}>{this.presentAsString()}</div>
+            <div>
+                <div className={this.props.className}>{this.presentAsString()}</div>
+                <div className={this.props.className}>{this.presentAsComponent()}</div>
+            </div>
         )
+    }
+
+    presentAsComponent = (component) => {
+        return <div>Test</div>
     }
 
     presentAsString = () => {
@@ -25,8 +32,8 @@ class GuitarString extends React.Component {
             return x.toLowerCase() === this.props.selectedNote.toLowerCase() ? `(${x})` : "-"
         })
         // Create string, taking into account the amount of space each item takes
-        return "||--" + this.state.notes.map( noteMapper )
-                    .map( x => x + "-".repeat(6 - x.length))
+        return "--" + this.state.notes.map( noteMapper )
+                    .map( (x, i) => x + "-".repeat(6 - x.length) + (i === 0 ? "|" : "") )
                     .join("|--") + "|"
     }
 
