@@ -12,12 +12,6 @@ class Controls extends React.Component {
                         value={this.props.selectedNote}
                         onChange={(e) => this.props.setSelectedNote(e.target.value)}
                     />
-                    <label>Note</label>
-                    <input
-                        type="text"
-                        value={this.props.selectedNote}
-                        onChange={(e) => this.props.setSelectedNote(e.target.value)}
-                    />
                 </GridRow>
             </div>
         )

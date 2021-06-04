@@ -2,6 +2,7 @@ import * as React from "react"
 
 import styled from "styled-components"
 import CircularList from "../structures/CircularList"
+import Note from "./Note"
 
 const NOTE_CIRCLE = new CircularList("E F F# G G# A A# B C C# D D#".split(" "))
 
@@ -16,14 +17,18 @@ class GuitarString extends React.Component {
     render() {
         return (
             <div>
-                <div className={this.props.className}>{this.presentAsString()}</div>
-                <div className={this.props.className}>{this.presentAsComponent()}</div>
+                <div className="note-container">{this.presentAsComponents()}</div>
             </div>
         )
     }
 
-    presentAsComponent = (component) => {
-        return <div>Test</div>
+    presentAsComponents = (component) => {
+        return this.state.notes.map( this.noteMapper ).map( x => <Note note={x} />)
+    }
+
+    noteMapper = (x) => {
+        if (!this.props.selectedNote) {return `${x}`}
+        return x.toLowerCase() === this.props.selectedNote.toLowerCase() ? `${x}` : ""
     }
 
     presentAsString = () => {
