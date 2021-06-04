@@ -16,7 +16,10 @@ import Controls from "./Controls"
 */
 
 class App extends React.Component {
-    state = {selectedNote: "F"}
+    state = {
+        selectedNote: "F",
+        noteChips: [],
+    }
 
     render() {
         return (
@@ -24,13 +27,34 @@ class App extends React.Component {
                 <GuitarHeader>
                     TOTALLY RAD GUITAR SIMULATOR
                 </GuitarHeader>
-                <Controls setSelectedNote={this.setSelectedNote} selectedNote={this.state.selectedNote} />
-                <Guitar selectedNote={this.state.selectedNote}/>
-                <Guitar selectedNote={this.state.selectedNote}/>
-                <Guitar selectedNote={this.state.selectedNote}/>
+                <Controls
+                    setSelectedNote={this.setSelectedNote}
+                    selectedNote={this.state.selectedNote} 
+                    handleAddNoteChip={this.handleAddNoteChip}
+                    handleDeleteNoteChip={this.handleDeleteNoteChip}
+                    noteChips={this.state.noteChips}
+                />
+                <Guitar
+                    selectedNote={this.state.selectedNote}
+                    selectedNotes={this.state.noteChips}
+                />
             </div>
         )
     } 
+
+    handleAddNoteChip = (noteChip) => {
+        this.setState((state) => {
+            return { noteChips: [...state.noteChips, noteChip] }
+        })
+    }
+
+    handleDeleteNoteChip = (noteChip, index) => {
+        this.setState((state) => {
+            return {
+                noteChips: [...state.noteChips.slice(0, index), ...state.noteChips.slice(index + 1)]
+            }
+        })
+    }
 
     setSelectedNote = (selectedNote) => {
         this.setState({selectedNote})

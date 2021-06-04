@@ -23,12 +23,12 @@ class GuitarString extends React.Component {
     }
 
     presentAsComponents = (component) => {
-        return this.state.notes.map( this.noteMapper ).map( x => <Note note={x} />)
+        return this.state.notes.map( this.noteMapper ).map( note => <Note note={note} />)
     }
 
-    noteMapper = (x) => {
-        if (!this.props.selectedNote) {return `${x}`}
-        return x.toLowerCase() === this.props.selectedNote.toLowerCase() ? `${x}` : ""
+    noteMapper = (note) => {
+        if (!this.props.selectedNotes) {return `${note}`}
+        return this.props.selectedNotes.map(x => x.toLowerCase()).includes(note.toLowerCase()) ? `${note}` : ""
     }
 
     presentAsString = () => {

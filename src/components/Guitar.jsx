@@ -2,14 +2,18 @@ import React from "react"
 import styled from "styled-components"
 import GuitarString from "./GuitarString"
 
-const Guitar = ({className, children, selectedNote}) => {
+const Guitar = ({className, children, selectedNote, selectedNotes}) => {
     const strings = "E A D G B E".split(" ")
     return (
         <div className={className}>
             {/* use reverse() -- bottom should be the bass strings */}
             <StringContainer>
                 {strings.reverse().map(
-                    (x, i) => <GuitarString selectedNote={selectedNote} tuning={x} key={i}/> )
+                    (x, i) => <GuitarString 
+                        selectedNote={selectedNote}
+                        selectedNotes={selectedNotes} 
+                        tuning={x} key={i}
+                    /> )
                 }
             </StringContainer>
         </div>
