@@ -3,6 +3,7 @@ import * as React from "react"
 import styled from "styled-components"
 import CircularList from "../structures/CircularList"
 import Note from "./Note"
+import {mapToColor} from "./config"
 
 const NOTE_CIRCLE = new CircularList("E F F# G G# A A# B C C# D D#".split(" "))
 
@@ -22,8 +23,11 @@ class GuitarString extends React.Component {
         )
     }
 
+    // Display the guitar string using react compoents
     presentAsComponents = (component) => {
-        return this.state.notes.map( this.noteMapper ).map( note => <Note note={note} />)
+        return this.state.notes.map( this.noteMapper ).map( note => {
+            return <Note style={{color: "red" }} note={note} />
+        })
     }
 
     noteMapper = (note) => {
@@ -31,6 +35,7 @@ class GuitarString extends React.Component {
         return this.props.selectedNotes.map(x => x.toLowerCase()).includes(note.toLowerCase()) ? `${note}` : ""
     }
 
+    // Display the guitar string using a string literal
     presentAsString = () => {
         const noteMapper = (x => {
             if (!this.props.selectedNote) {return `(${x})`}
