@@ -18,7 +18,9 @@ class GuitarString extends React.Component {
     render() {
         return (
             <div>
-                <div className="note-container">{this.presentAsComponents()}</div>
+                {this.props.shouldPresentAsComponents ? <div className="note-container">
+                    {this.presentAsComponents()}</div> : this.presentAsString()
+                }
             </div>
         )
     }
@@ -37,13 +39,13 @@ class GuitarString extends React.Component {
 
     // Display the guitar string using a string literal
     presentAsString = () => {
-        const noteMapper = (x => {
-            if (!this.props.selectedNote) {return `(${x})`}
-            return x.toLowerCase() === this.props.selectedNote.toLowerCase() ? `(${x})` : "-"
+        const noteMapper = (note => {
+            if (!this.props.selectedNote) {return `(${note})`}
+            return this.props.selectedNotes.map(x => x.toLowerCase()).includes(note.toLowerCase()) ? `(${note})` : ""
         })
         // Create string, taking into account the amount of space each item takes
         return "--" + this.state.notes.map( noteMapper )
-                    .map( (x, i) => x + "-".repeat(6 - x.length) + (i === 0 ? "|" : "") )
+                    .map( (x, i) => x + "-".repeat(6 - (x.length + 1)) + (i === 0 ? "|" : "") )
                     .join("|--") + "|"
     }
 

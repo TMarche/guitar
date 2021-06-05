@@ -10,12 +10,6 @@ class Controls extends React.Component {
         return (
             <div className={this.props.className}>
                 <GridRow>
-                    <label>Notes</label>
-                    <ChipInput
-                        value={this.props.noteChips}
-                        onAdd={(chip) => this.props.handleAddNoteChip(chip)}
-                        onDelete={(chip, index) => this.props.handleDeleteNoteChip(chip, index)}
-                    />
                     <FormControlLabel
                         control={
                         <Checkbox
@@ -27,7 +21,12 @@ class Controls extends React.Component {
                         }
                         label="Should Present as Components"
                     />
-
+                    <label>Notes</label>
+                    <ChipInput
+                        value={this.props.noteChips}
+                        onAdd={(chip) => this.props.handleAddNoteChip(chip)}
+                        onDelete={(chip, index) => this.props.handleDeleteNoteChip(chip, index)}
+                    />
                 </GridRow>
             </div>
         )
