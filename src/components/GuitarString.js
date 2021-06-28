@@ -33,14 +33,14 @@ class GuitarString extends React.Component {
     }
 
     noteMapper = (note) => {
-        if (!this.props.selectedNotes) {return `${note}`}
+        if (this.props.selectedNotes.length === 0) {return `${note}`}
         return this.props.selectedNotes.map(x => x.toLowerCase()).includes(note.toLowerCase()) ? `${note}` : ""
     }
 
     // Display the guitar string using a string literal
     presentAsString = () => {
         const noteMapper = (note => {
-            if (!this.props.selectedNote) {return `(${note})`}
+            if (this.props.selectedNotes.length === 0) {return `(${note})`}
             return this.props.selectedNotes.map(x => x.toLowerCase()).includes(note.toLowerCase()) ? `(${note})` : ""
         })
         // Create string, taking into account the amount of space each item takes
