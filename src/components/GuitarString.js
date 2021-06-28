@@ -8,7 +8,7 @@ import {mapToColor} from "./config"
 const NOTE_CIRCLE = new CircularList("E F F# G G# A A# B C C# D D#".split(" "))
 
 class GuitarString extends React.Component {
-    static defaultProps = {length: 23}
+    static defaultProps = {length: 18}
     state = {notes: []}
 
     componentDidMount() {
