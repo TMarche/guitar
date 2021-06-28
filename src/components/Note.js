@@ -3,7 +3,7 @@ import "../styles/styles.css"
 
 import styled from "styled-components"
 
-import mapToColor from "./config"
+import {mapToColor} from "./config"
 
 
 
@@ -11,7 +11,7 @@ const StyledNote = styled.button`
     font-size: 24px;
     color: white;
     border: none;
-    background: #555;
+    background: ${props => mapToColor(props.note)};
     box-shadow: 0 3px 0 #222;
     font-family: 'Spartan', sans-serif;
     text-align: center;
@@ -39,17 +39,5 @@ class Note extends React.Component {
         return <StyledNote note={this.props.note}>{this.props.note}</StyledNote>
     }
 }
-
-
-
-// class Note extends React.Component {
-//     render() {
-//         return (
-//             <div className="note">
-//                 <div>{this.props.note}</div>
-//             </div>
-//         );
-//     }
-// }
 
 export default Note

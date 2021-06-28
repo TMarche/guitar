@@ -5,16 +5,18 @@ const noteColorMapping = [
     ["A#", "orange"],
     ["B", "yellow"],
     ["C", "green"],
-    ["C#", "salmon"],
-    ["D", "salmon"],
-    ["D#", "salmon"],
-    ["E", "salmon"],
-    ["F", "salmon"],
-    ["F#", "salmon"],
-    ["G", "salmon"],
+    ["C#", "slateblue"],
+    ["D", "pink"],
+    ["D#", "palevioletred"],
+    ["E", "turquoise"],
+    ["F", "royalblue"],
+    ["F#", "yellowgreen"],
+    ["G", "purple"],
     ["G#", "salmon"],
 ]
 
 export const mapToColor = (note) => {
-    return _.find(noteColorMapping, (x => x[0] === note.toUpperCase()))
+    const searchResult = _.find(noteColorMapping, (x => x[0] === note.toUpperCase()));
+    if (searchResult) {return searchResult[1]};
+    return "#555";
 }
