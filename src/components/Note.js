@@ -1,9 +1,12 @@
 import * as React from "react";
-import "../styles/styles.css"
 
-import styled from "styled-components"
+import styled from "styled-components";
 
-import {mapToColor} from "./config"
+import color from "color";
+
+import "../styles/styles.css";
+
+import {mapToColor} from "./config";
 
 
 
@@ -12,7 +15,7 @@ const StyledNote = styled.button`
     color: white;
     border: none;
     background: ${props => mapToColor(props.note)};
-    box-shadow: 0 3px 0 #222;
+    box-shadow: 0 3px 0 ${props => color(mapToColor(props.note)).darken(.2)};
     font-family: 'Spartan', sans-serif;
     text-align: center;
     width: 50px;
@@ -21,7 +24,8 @@ const StyledNote = styled.button`
     line-height: 25px;
 
     &:hover {
-        background: #777;
+        background: ${props => color(mapToColor(props.note)).lighten(.2)};
+        box-shadow: 0 3px 0 ${props => color(mapToColor(props.note))};
     }
 
     &:active {

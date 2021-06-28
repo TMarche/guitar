@@ -3,7 +3,7 @@ import _ from "lodash";
 const noteColorMapping = [
     ["A", "red"],
     ["A#", "orange"],
-    ["B", "yellow"],
+    ["B", "maroon"],
     ["C", "green"],
     ["C#", "slateblue"],
     ["D", "pink"],
