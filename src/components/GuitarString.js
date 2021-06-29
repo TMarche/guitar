@@ -3,7 +3,6 @@ import * as React from "react"
 import styled from "styled-components"
 import CircularList from "../structures/CircularList"
 import Note from "./Note"
-import {mapToColor} from "./config"
 
 const NOTE_CIRCLE = new CircularList("E F F# G G# A A# B C C# D D#".split(" "))
 
