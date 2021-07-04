@@ -14,7 +14,9 @@
     "material-ui-chip-input": "^2.0.0-beta.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
+    "redux": "^4.1.0",
     "styled-components": "^5.2.3",
     "web-vitals": "^1.0.1"
   },

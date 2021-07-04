@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import GuitarString from "./GuitarString"
 
-const Guitar = ({className, children, selectedNote, selectedNotes, shouldPresentAsComponents}) => {
+const Guitar = ({className, children, selectedNote, selectedNotes, }) => {
     const strings = "E A D G B E".split(" ")
     return (
         <div className={className}>
@@ -13,7 +13,6 @@ const Guitar = ({className, children, selectedNote, selectedNotes, shouldPresent
                         selectedNote={selectedNote}
                         selectedNotes={selectedNotes} 
                         tuning={x} key={i}
-                        shouldPresentAsComponents={shouldPresentAsComponents}
                     /> )
                 }
             </StringContainer>

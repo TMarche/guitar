@@ -19,7 +19,6 @@ class App extends React.Component {
     state = {
         selectedNote: "F",
         noteChips: [],
-        shouldPresentAsComponents: true,
     }
 
     render() {
@@ -34,13 +33,10 @@ class App extends React.Component {
                     handleAddNoteChip={this.handleAddNoteChip}
                     handleDeleteNoteChip={this.handleDeleteNoteChip}
                     noteChips={this.state.noteChips}
-                    shouldPresentAsComponents={this.state.shouldPresentAsComponents}
-                    toggleShouldPresentAsComponents={this.toggleShouldPresentAsComponents}
                 />
                 <Guitar
                     selectedNote={this.state.selectedNote}
                     selectedNotes={this.state.noteChips}
-                    shouldPresentAsComponents={this.state.shouldPresentAsComponents}
                 />
             </div>
         )
@@ -62,12 +58,6 @@ class App extends React.Component {
 
     setSelectedNote = (selectedNote) => {
         this.setState({selectedNote})
-    }
-
-    toggleShouldPresentAsComponents = () => {
-        this.setState((state) => {
-            return {shouldPresentAsComponents: !this.state.shouldPresentAsComponents}
-        })
     }
 }
 

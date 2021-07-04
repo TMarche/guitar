@@ -10,17 +10,6 @@ class Controls extends React.Component {
         return (
             <div className={this.props.className}>
                 <GridRow>
-                    <FormControlLabel
-                        control={
-                        <Checkbox
-                            checked={this.props.shouldPresentAsComponents}
-                            onChange={this.props.toggleShouldPresentAsComponents}
-                            name="shouldPresentAsComponents"
-                            color="primary"
-                        />
-                        }
-                        label="Should Present as Components"
-                    />
                     <label>Notes</label>
                     <ChipInput
                         value={this.props.noteChips}
