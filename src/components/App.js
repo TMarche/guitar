@@ -32,7 +32,6 @@ class App extends React.Component {
                     selectedNote={this.state.selectedNote} 
                     handleAddNoteChip={this.handleAddNoteChip}
                     handleDeleteNoteChip={this.handleDeleteNoteChip}
-                    noteChips={this.state.noteChips}
                 />
                 <Guitar
                     selectedNote={this.state.selectedNote}

@@ -1,0 +1,5 @@
+export const SET_TRUE = "SET_TRUE"
+export const SET_FALSE = "SET_FALSE"
+export const ADD_NOTE_CHIP = "ADD_NOTE_CHIP"
+export const DELETE_NOTE_CHIP = "DELETE_NOTE_CHIP"
+export const CLEAR_NOTE_CHIPS = "CLEAR_NOTE_CHIPS"

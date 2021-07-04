@@ -10,8 +10,6 @@ const Guitar = ({className, children, selectedNote, selectedNotes, }) => {
             <StringContainer>
                 {strings.reverse().map(
                     (x, i) => <GuitarString 
-                        selectedNote={selectedNote}
-                        selectedNotes={selectedNotes} 
                         tuning={x} key={i}
                     /> )
                 }

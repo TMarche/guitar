@@ -1,6 +1,9 @@
 import * as React from "react"
+import {connect} from 'react-redux'
 
 import styled from "styled-components"
+import { getNoteChips } from "../selectors"
+
 import CircularList from "../structures/CircularList"
 import Note from "./Note"
 
@@ -45,7 +48,13 @@ class GuitarString extends React.Component {
     }
 }
 
-export default styled(GuitarString)`
+const mapStateToProps = (state) => {
+    return {
+        selectedNotes: getNoteChips(state)
+    }
+}
+
+export default styled(connect(mapStateToProps, {})(GuitarString))`
     margin: 10px 0;
     font-family: monospace;
 `;
