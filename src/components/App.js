@@ -27,37 +27,11 @@ class App extends React.Component {
                 <GuitarHeader>
                     TOTALLY RAD GUITAR SIMULATOR
                 </GuitarHeader>
-                <Controls
-                    setSelectedNote={this.setSelectedNote}
-                    selectedNote={this.state.selectedNote} 
-                    handleAddNoteChip={this.handleAddNoteChip}
-                    handleDeleteNoteChip={this.handleDeleteNoteChip}
-                />
-                <Guitar
-                    selectedNote={this.state.selectedNote}
-                    selectedNotes={this.state.noteChips}
-                />
+                <Controls />
+                <Guitar />
             </div>
         )
     } 
-
-    handleAddNoteChip = (noteChip) => {
-        this.setState((state) => {
-            return { noteChips: [...state.noteChips, noteChip] }
-        })
-    }
-
-    handleDeleteNoteChip = (noteChip, index) => {
-        this.setState((state) => {
-            return {
-                noteChips: [...state.noteChips.slice(0, index), ...state.noteChips.slice(index + 1)]
-            }
-        })
-    }
-
-    setSelectedNote = (selectedNote) => {
-        this.setState({selectedNote})
-    }
 }
 
 const GuitarHeader = styled.div`

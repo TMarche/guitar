@@ -13,12 +13,12 @@ class Controls extends React.Component {
         return (
             <div className={this.props.className}>
                 <GridRow>
-                    <Button onClick={this.props.clearNoteChips} variant="contained" color="secondary">CLEAR NOTE CHIPS</Button>
-                    <label>Notes</label>
+                    <Button onClick={this.props.clearNoteChips} variant="contained" color="secondary">CLEAR NOTES</Button>
                     <ChipInput
                         value={this.props.noteChips}
                         onAdd={(chip) => this.props.addNoteChip(chip)}
                         onDelete={(chip, index) => this.props.deleteNoteChip(chip, index)}
+                        label="Notes"
                     />
                 </GridRow>
             </div>
