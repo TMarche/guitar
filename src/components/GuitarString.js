@@ -27,14 +27,14 @@ class GuitarString extends React.Component {
 
     // Display the guitar string using react compoents
     presentAsComponents = (component) => {
-        return this.state.notes.map( this.noteMapper ).map( note => {
-            return <Note style={{color: "red" }} note={note} />
+        return this.state.notes.map( note => {
+            return <Note note={note} isHidden={this.isHidden(note)}/>
         })
     }
 
-    noteMapper = (note) => {
-        if (this.props.selectedNotes.length === 0) {return `${note}`}
-        return this.props.selectedNotes.map(x => x.toLowerCase()).includes(note.toLowerCase()) ? `${note}` : ""
+    isHidden = (note) => {
+        return this.props.selectedNotes.length !== 0 &&
+            !this.props.selectedNotes.map(x => x.toUpperCase()).includes(note.toUpperCase())
     }
 
     getNotes = () => {

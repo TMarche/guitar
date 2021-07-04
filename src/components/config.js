@@ -15,8 +15,9 @@ const noteColorMapping = [
     ["G#", "salmon"],
 ]
 
-export const mapToColor = (note) => {
+export const mapToColor = (note, isHidden) => {
     const searchResult = _.find(noteColorMapping, (x => x[0] === note.toUpperCase()));
+    if (isHidden) { return "#555"}
     if (searchResult) {return searchResult[1]};
     return "#555";
 }

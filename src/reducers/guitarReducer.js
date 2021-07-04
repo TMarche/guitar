@@ -15,7 +15,7 @@ export default (state = INITIAL_STATE, action) => {
         case SET_FALSE:
             return state.set("value", "false")
         case ADD_NOTE_CHIP:
-            return state.set("noteChips", [...state.get("noteChips"), action.noteChip])
+            return state.set("noteChips", [...state.get("noteChips"), action.noteChip.toUpperCase()])
         case DELETE_NOTE_CHIP:
             let chips = state.get("noteChips")
             chips = chips.filter( (x) => x !== action.noteChip )
