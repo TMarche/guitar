@@ -26,7 +26,7 @@ class GuitarString extends React.Component {
 
     // Display the guitar string using react compoents
     presentAsComponents = (component) => {
-        return this.state.notes.map( note => {
+        return this.getNotes().map( note => {
             return <Note note={note} isHidden={this.isHidden(note)}/>
         })
     }

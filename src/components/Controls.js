@@ -33,7 +33,7 @@ class Controls extends React.Component {
                                 value={this.props.fretCount}
                                 onChange={(event, newValue) => this.props.setFretCount(newValue)}
                                 aria-labelledby="input-slider"
-                                min={0}
+                                min={1}
                                 max={24}
                             />
                         </Grid>
