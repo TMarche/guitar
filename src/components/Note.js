@@ -23,7 +23,6 @@ const StyledNote = styled.button`
     height: 0;
     width: clamp(5px, ${props => (80/props.fretCount)}%, 80px);
     padding-bottom: clamp(5px, ${props => (80/props.fretCount)}%, 80px);
-    line-height:  clamp(-80px, ${props => 6000/props.fretCount}%, 80px);
     margin: clamp(.5px, ${props => 10/props.fretCount}%, 8px);
     font-size: 24px;
 
@@ -41,6 +40,13 @@ const StyledNote = styled.button`
     text-transform: uppercase;
 `
 
+const TextContainer = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+`
+
 class Note extends React.Component {
     render() {
         return <StyledNote
@@ -49,7 +55,9 @@ class Note extends React.Component {
                    isHidden={this.props.isHidden}
                    fretCount={this.props.fretCount}
                 >
-                    {this.renderNote()}
+                    <TextContainer>
+                        {this.renderNote()}
+                    </TextContainer>
                 </StyledNote>
     }
 
