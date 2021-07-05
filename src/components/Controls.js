@@ -4,16 +4,13 @@ import {connect} from 'react-redux'
 import styled from "styled-components"
 import ChipInput from "material-ui-chip-input"
 import {Button, Slider} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles';
 
 
 import Grid from '@material-ui/core/Grid';
-import VolumeUp from '@material-ui/icons/VolumeUp';
 
 
 import { getFretCount, getNoteChips } from "../selectors"
 import { addNoteChip, deleteNoteChip, clearNoteChips, setFretCount } from "../actions"
-import Typography from "material-ui/styles/typography"
 
 class Controls extends React.Component {
     render() {

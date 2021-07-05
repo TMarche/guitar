@@ -9,7 +9,7 @@ import color from "color";
 import "../styles/styles.css";
 
 import {mapToColor} from "./config";
-import { addNoteChip, deleteNoteChip, clearNoteChips } from "../actions"
+import { addNoteChip, deleteNoteChip } from "../actions"
 
 const StyledNote = styled.button`
     color: white;
