@@ -2,7 +2,7 @@ import * as React from "react"
 import {connect} from 'react-redux'
 
 import styled from "styled-components"
-import { getNoteChips } from "../selectors"
+import { getFretCount, getNoteChips } from "../selectors"
 
 import CircularList from "../structures/CircularList"
 import Note from "./Note"
@@ -10,7 +10,6 @@ import Note from "./Note"
 const NOTE_CIRCLE = new CircularList("E F F# G G# A A# B C C# D D#".split(" "))
 
 class GuitarString extends React.Component {
-    static defaultProps = {length: 18}
     state = {notes: []}
 
     componentDidMount() {
@@ -40,7 +39,7 @@ class GuitarString extends React.Component {
     getNotes = () => {
         const rootIndex = NOTE_CIRCLE.indexOf(this.props.tuning)
         let notes = []
-        for (let i = 0; i < this.props.length; i++) {
+        for (let i = 0; i < this.props.fretCount; i++) {
             notes.push(NOTE_CIRCLE.get(rootIndex + i))
         }
         return notes;
@@ -50,7 +49,8 @@ class GuitarString extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        selectedNotes: getNoteChips(state)
+        selectedNotes: getNoteChips(state),
+        fretCount: getFretCount(state)
     }
 }
 

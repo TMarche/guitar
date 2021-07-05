@@ -4,10 +4,16 @@ import {connect} from 'react-redux'
 import styled from "styled-components"
 import ChipInput from "material-ui-chip-input"
 import {Button, Slider} from '@material-ui/core'
-import {Typography} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles';
 
-import { getNoteChips } from "../selectors"
+
+import Grid from '@material-ui/core/Grid';
+import VolumeUp from '@material-ui/icons/VolumeUp';
+
+
+import { getFretCount, getNoteChips } from "../selectors"
 import { addNoteChip, deleteNoteChip, clearNoteChips, setFretCount } from "../actions"
+import Typography from "material-ui/styles/typography"
 
 class Controls extends React.Component {
     render() {
@@ -21,12 +27,17 @@ class Controls extends React.Component {
                         onDelete={(chip, index) => this.props.deleteNoteChip(chip, index)}
                         label="Notes"
                     />
-                    <Typography id="input-slider" gutterBottom>Test</Typography>
-                    <Slider
-                        value={0}
-                        onChange={() => console.log("Changed!")}
-                        aria-labelledby="input-slider"
-                    />
+                    <Grid container spacing={2} alignItems="center">
+                        <Grid item xs>
+                            <Slider
+                                value={this.props.fretCount}
+                                onChange={(event, newValue) => this.props.setFretCount(newValue)}
+                                aria-labelledby="input-slider"
+                                min={0}
+                                max={24}
+                            />
+                        </Grid>
+                    </Grid>
 
                 </GridRow>
             </div>
@@ -37,7 +48,8 @@ class Controls extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        noteChips: getNoteChips(state)
+        noteChips: getNoteChips(state),
+        fretCount: getFretCount(state)
     }
 }
 
@@ -50,10 +62,10 @@ const mapDispatchToProps = {
 
 const GridRow = styled.div`
     display: inline-grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 10px;
+    grid-template-columns: repeat(4, minmax(200px, min-content));//auto auto 200px auto;
+    gap: 3rem;
 `
 
 export default styled(connect(mapStateToProps, mapDispatchToProps)(Controls))`
-    margin: 10px;
+    margin: 1rem;
 `
