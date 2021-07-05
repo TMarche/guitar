@@ -3,10 +3,11 @@ import {connect} from 'react-redux'
 
 import styled from "styled-components"
 import ChipInput from "material-ui-chip-input"
-import {Button} from '@material-ui/core'
+import {Button, Slider} from '@material-ui/core'
+import {Typography} from '@material-ui/core'
 
 import { getNoteChips } from "../selectors"
-import { addNoteChip, deleteNoteChip, clearNoteChips } from "../actions"
+import { addNoteChip, deleteNoteChip, clearNoteChips, setFretCount } from "../actions"
 
 class Controls extends React.Component {
     render() {
@@ -20,6 +21,13 @@ class Controls extends React.Component {
                         onDelete={(chip, index) => this.props.deleteNoteChip(chip, index)}
                         label="Notes"
                     />
+                    <Typography id="input-slider" gutterBottom>Test</Typography>
+                    <Slider
+                        value={0}
+                        onChange={() => console.log("Changed!")}
+                        aria-labelledby="input-slider"
+                    />
+
                 </GridRow>
             </div>
         )
@@ -33,12 +41,19 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = {
+    addNoteChip,
+    deleteNoteChip,
+    clearNoteChips,
+    setFretCount,
+}
+
 const GridRow = styled.div`
     display: inline-grid;
     grid-template-columns: auto auto auto auto;
     gap: 10px;
 `
 
-export default styled(connect(mapStateToProps, {addNoteChip, deleteNoteChip, clearNoteChips})(Controls))`
+export default styled(connect(mapStateToProps, mapDispatchToProps)(Controls))`
     margin: 10px;
 `
