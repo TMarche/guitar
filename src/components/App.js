@@ -38,10 +38,10 @@ const GuitarHeader = styled.div`
     font-size: 3em;
     font-weight: lighter;
     background-color: white;
-    color: black;
+    color: #333;
     line-height: 1em;
     padding: 20px;
-    letter-spacing: .5em;
+    font-family: 'Roboto Slab', sans-serif;
 `
 
 export default styled(App)``
